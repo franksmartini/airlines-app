@@ -40,7 +40,7 @@ function Airlines() {
 
   return (
     <Container maxWidth="sm" sx={{ p: 4 }}>
-      <FormControl variant="standard" fullWidth>
+      <FormControl variant="standard" fullWidth sx={{ mb: 1 }}>
         <InputLabel>
           Search airlines by name and country
         </InputLabel>
