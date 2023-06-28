@@ -11,10 +11,14 @@ import MenuItem from '@mui/material/MenuItem';
 import AirplanemodeActiveIcon from '@mui/icons-material/AirplanemodeActive';
 import AccountCircle from '@mui/icons-material/AccountCircle';
 import EditLoginDialog from './dialogs/EditLoginDialog';
+import DeactivateDialog from './dialogs/DeactivateDialog';
+import ReactivateDialog from './dialogs/ReactivateDialog';
 
 function Header() {
   const [anchorElUser, setAnchorElUser] = useState(null);
   const [loginDialogOpen, setLoginDialogOpen] = useState(false);
+  const [deactivateDialogOpen, setDeactivateDialogOpen] = useState(false);
+  const [reactivateDialogOpen, setReactivateDialogOpen] = useState(false);
 
   const handleOpenUserMenu = (event) => {
     setAnchorElUser(event.currentTarget);
@@ -27,6 +31,16 @@ function Header() {
   const handleClickLogin = () => {
     handleCloseUserMenu();
     setLoginDialogOpen(true);
+  }
+
+  const handleClickDeactivate = () => {
+    handleCloseUserMenu();
+    setDeactivateDialogOpen(true);
+  }
+
+  const handleClickReactivate = () => {
+    handleCloseUserMenu();
+    setReactivateDialogOpen(true);
   }
 
   return (
@@ -82,12 +96,12 @@ function Header() {
                     Login
                   </Typography>
                 </MenuItem>
-                <MenuItem onClick={handleCloseUserMenu}>
+                <MenuItem onClick={handleClickDeactivate}>
                   <Typography textAlign="center">
                     Deactivate
                   </Typography>
                 </MenuItem>
-                <MenuItem onClick={handleCloseUserMenu}>
+                <MenuItem onClick={handleClickReactivate}>
                   <Typography textAlign="center">
                     Reactivate
                   </Typography>
@@ -100,6 +114,14 @@ function Header() {
       <EditLoginDialog
         open={loginDialogOpen}
         onClose={() => setLoginDialogOpen(false)}
+      />
+      <DeactivateDialog
+        open={deactivateDialogOpen}
+        onClose={() => setDeactivateDialogOpen(false)}
+      />
+      <ReactivateDialog
+        open={reactivateDialogOpen}
+        onClose={() => setReactivateDialogOpen(false)}
       />
     </>
   );

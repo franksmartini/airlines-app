@@ -1,12 +1,24 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { DialogContent, DialogTitle, FormControl, FormHelperText, Grid, IconButton, Typography } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
 import { StyledDialog } from '../styled/StyledDialog';
 import { StyledFormLabel } from '../styled/StyledFormLabel';
 import { StyledOutlinedInput } from '../styled/StyledOutlinedInput';
 import { StyledPrimaryButton } from '../styled/StyledPrimaryButton';
+import { StyledLinkPrimaryButton } from '../styled/StyledLinkPrimaryButton';
+import { StyledLinkSecondaryButton } from '../styled/StyledLinkSecondaryButton';
 
 function EditLoginDialog ({ open, onClose }) {
+  const [changingPassword, setChangingPassword] = useState(false);
+
+  const handleClickShowChangePassword = () => {
+    setChangingPassword(true);
+  }
+
+  const handleClickHideChangePassword = () => {
+    setChangingPassword(false);
+  }
+
   return (
     <StyledDialog open={open} onClose={onClose} fullWidth maxWidth='sm'>
       <DialogTitle>
@@ -35,14 +47,41 @@ function EditLoginDialog ({ open, onClose }) {
           </FormHelperText>
         </FormControl>
 
-        <FormControl variant="standard" fullWidth sx={{ mt: 3 }}>
-          <StyledFormLabel>PASSWORD</StyledFormLabel>
-          <StyledOutlinedInput type='password' size='small' />
-        </FormControl>
+        {!changingPassword && (
+          <>
+            <FormControl variant="standard" fullWidth sx={{ mt: 3 }}>
+              <StyledFormLabel>PASSWORD</StyledFormLabel>
+              <StyledOutlinedInput type='password' size='small' />
+            </FormControl>
+            <StyledLinkPrimaryButton size="small" onClick={handleClickShowChangePassword}>
+              Change Password
+            </StyledLinkPrimaryButton>
+          </>
+        )}
+
+        {changingPassword && (
+          <>
+            <FormControl variant="standard" fullWidth sx={{ mt: 3 }}>
+              <StyledFormLabel>CURRENT PASSWORD</StyledFormLabel>
+              <StyledOutlinedInput type='password' size='small' />
+            </FormControl>
+            <FormControl variant="standard" fullWidth sx={{ mt: 3 }}>
+              <StyledFormLabel>NEW PASSWORD</StyledFormLabel>
+              <StyledOutlinedInput type='password' size='small' placeholder='Input new password' />
+            </FormControl>
+            <FormControl variant="standard" fullWidth sx={{ mt: 3 }}>
+              <StyledFormLabel>CONFIRM NEW PASSWORD</StyledFormLabel>
+              <StyledOutlinedInput type='password' size='small' placeholder='Confirm new password' />
+            </FormControl>
+            <StyledLinkSecondaryButton size="small" onClick={handleClickHideChangePassword}>
+              Cancel Change Password
+            </StyledLinkSecondaryButton>
+          </>
+        )}
 
         <StyledFormLabel sx={{ mt: 3 }}>MOBILE NUMBER</StyledFormLabel>
 
-        <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
+        <Grid container columnSpacing={1}>
           <Grid item xs={3}>
             <FormControl variant="standard" fullWidth>
               <StyledOutlinedInput size='small' />

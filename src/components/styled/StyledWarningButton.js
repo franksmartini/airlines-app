@@ -1,14 +1,14 @@
 import { Button } from '@mui/material';
 import { styled } from '@mui/material/styles';
 
-export const StyledPrimaryButton = styled(Button)(() => ({
+export const StyledWarningButton = styled(Button)(() => ({
     width: '100%',
-    color: 'white',
-    background: 'black',
+    background: '#fbecea',
+    color: '#c42930',
     borderRadius: 0,
     padding: '14px 0',
     textTransform: 'none',
     '&:hover': {
-        backgroundColor: '#333',
+        backgroundColor: '#ebdcda',
     }
 }));

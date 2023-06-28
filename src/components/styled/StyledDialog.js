@@ -15,5 +15,6 @@ export const StyledDialog = styled(Dialog)(() => ({
   '& .MuiDialogContent-root': {
     paddingLeft: '40px',
     paddingRight: '40px',
+    paddingBottom: '40px',
   }
 }));
