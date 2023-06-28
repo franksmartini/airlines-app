@@ -5,7 +5,7 @@ import { AIRLINES_LIST_ENTITY_HEIGHT } from '../constants';
 import AirlineDetailsDialog from './dialogs/AirlineDetailsDialog';
 import EditAirlineDialog from './dialogs/EditAirlineDialog';
 
-function AirlineRow({ airline, onViewDetails }) {
+function AirlineRow({ airline }) {
   const [opened, setOpened] = useState(false);
   const [editing, setEditing] = useState(false);
 
